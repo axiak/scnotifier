@@ -43,12 +43,12 @@ var excludedIps = ["127.0.0.1", "24.61.10.10"];
 
 http.createServer(function (req, res) {
   var referer = req.headers.referer || '';
-  var remoteAddr = req.connection.remoteAddress;
+  var remoteAddr = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
   if (referer.indexOf('http://www.reddit.com/r/starcraft/') !== 0 &&
       excludedIps.indexOf(remoteAddr) === -1) {
     res.writeHead(403, {"Content-Type": "text/plain"});
-    res.end("Cannot access server outside reddit sc: " + remoteAddr + req.headers['x-forwarded-proto']);
+    res.end("Cannot access server outside reddit sc.");
     return;
   }
 
