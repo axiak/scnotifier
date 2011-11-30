@@ -1,0 +1,9 @@
+{
+    "name": "sc2notifier"
+  , "description":"Starcraft notifier"
+  , "version": "0.0.1"
+  , "private": true
+  , "dependencies": {
+      "canvas": "0.8.1"
+  }
+}
