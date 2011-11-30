@@ -4,7 +4,8 @@
   , "version": "0.0.1"
   , "private": true
   , "dependencies": {
-      "canvas": "0.8.1"
-    , "express": "2.2.0"
+      "gm": "0.5.0"
+    , "temp": "0.2.0"
+#    , "express": "2.2.0"
   }
 }
