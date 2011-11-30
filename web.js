@@ -27,4 +27,4 @@ http.createServer(function (req, res) {
         showError(res, "Writing the image: " + err);
       }
     });
-}).listen(5000, "127.0.0.1");
+}).listen(process.env.PORT || 3000);
