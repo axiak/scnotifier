@@ -4,7 +4,7 @@
   , "version": "0.0.1"
   , "private": true
   , "dependencies": {
-      "gm": "0.5.0"
+      "node-wkhtml": "0.0.3"
     , "temp": "0.2.0"
   }
 }
