@@ -48,7 +48,7 @@ http.createServer(function (req, res) {
   if (referer.indexOf('http://www.reddit.com/r/starcraft/') !== 0 &&
       excludedIps.indexOf(remoteAddr) === -1) {
     res.writeHead(403, {"Content-Type": "text/plain"});
-    res.end("Cannot access server outside reddit sc.");
+    res.end("Cannot access server outside reddit sc: " + remoteAddr + req.headers['x-forwarded-for']);
     return;
   }
 
