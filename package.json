@@ -6,6 +6,5 @@
   , "dependencies": {
       "gm": "0.5.0"
     , "temp": "0.2.0"
-#    , "express": "2.2.0"
   }
 }
