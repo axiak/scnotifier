@@ -40,6 +40,7 @@ function dateDiff(eventDate) {
 
 var excludedIps = ["127.0.0.1", "24.61.10.10"];
 
+var FONT = 'Helvetica-Bold'; // 'Times-Bold';
 
 http.createServer(function (req, res) {
   var referer = req.headers.referer || '';
@@ -66,7 +67,7 @@ http.createServer(function (req, res) {
   var eventDate = new Date(parsedUrl.query.date);
 
   createImage.createImage(eventTitle + " " + dateDiff(eventDate),
-              {font: "Arial-bold", fill: "white", background: "black", size: 15},
+              {font: FONT, fill: "white", background: "black", size: 15},
 
               function (err, output) {
                 if (err) {
