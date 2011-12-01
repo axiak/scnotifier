@@ -55,14 +55,6 @@ http.createServer(function (req, res) {
 
   var parsedUrl = url.parse(req.url, true);
 
-  if (parsedUrl.query.fonts) {
-    createImage.getFonts(function (fonts) {
-      res.writeHead(200, {"Content-Type": "text/plain"});
-      res.end(fonts.join("\n"));
-    });
-    return;
-  }
-
   var eventTitle = parsedUrl.query.title;
   var eventDate = new Date(parsedUrl.query.date);
 
