@@ -48,3 +48,22 @@ exports.createImage = function(text, opts, callback) {
   });
 };
 
+
+exports.getFonts = function (callback) {
+  var convert = spawn('convert', ['-list', 'font']);
+  var fonts = [];
+  convert.stdout.setEncoding('utf8');
+  convert.stdout.on('data', function (data) {
+    var lines = data.split("\n");
+    for (var i = 0; i < lines.length; i++) {
+      var match = lines[i].match(/Font: (\S+)/);
+      if (match) {
+        fonts.push(match[1]);
+      }
+    }
+  });
+  convert.on('exit', function (code) {
+    fonts.sort();
+    callback(fonts);
+  });
+}

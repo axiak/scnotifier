@@ -1,4 +1,4 @@
-var createImage = require('./createImage').createImage,
+var createImage = require('./createImage'),
     url = require('url'),
     http = require('http');
 
@@ -54,10 +54,18 @@ http.createServer(function (req, res) {
 
   var parsedUrl = url.parse(req.url, true);
 
+  if (parsedUrl.query.fonts) {
+    createImage.getFonts(function (fonts) {
+      res.writeHead(200, {"Content-Type": "text/plain"});
+      res.end(fonts.join("\n"));
+    });
+    return;
+  }
+
   var eventTitle = parsedUrl.query.title;
   var eventDate = new Date(parsedUrl.query.date);
 
-  createImage(eventTitle + " " + dateDiff(eventDate),
+  createImage.createImage(eventTitle + " " + dateDiff(eventDate),
               {font: "Arial-bold", fill: "white", background: "black", size: 15},
 
               function (err, output) {
